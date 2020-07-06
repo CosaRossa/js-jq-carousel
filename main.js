@@ -5,40 +5,21 @@ $(document).ready(function () {
   // Cliccando sulla freccia di dx scorro in avanti lo slider
   // e coloro correttamente i pallini
   btnNext.click(function () {
-    var imgActive = $('img.active');
-    var imgFirst = $('img.first');
-    var dotActive = $('i.fa-circle.active');
-    var dotFirst = $('i.fa-circle.first');
-
-    imgActive.removeClass('active');
-    dotActive.removeClass('active');
-
-    if (imgActive.hasClass('last')) {
-      imgFirst.addClass('active');
-      dotFirst.addClass('active');
-    } else {
-      imgActive.next('img').addClass('active');
-      dotActive.next('i').addClass('active');
-    }
+    imageNext();
   });
 
   // Cliccando sulla freccia di sx scorro indietro lo slider
   // e coloro correttamente i pallini
   btnPrev.click(function () {
-    var imgActive = $('img.active');
-    var imgLast = $('img.last');
-    var dotActive = $('i.fa-circle.active');
-    var dotLast = $('i.fa-circle.last');
+    imagePrev();
+  });
 
-    imgActive.removeClass('active');
-    dotActive.removeClass('active');
-
-    if (imgActive.hasClass('first')) {
-      imgLast.addClass('active');
-      dotLast.addClass('active');
-    } else {
-      imgActive.prev('img').addClass('active');
-      dotActive.prev('i').addClass('active');
+  //Anche le frecce possono cambiare immagine
+  $(document).keydown(function () {
+    if (event.keyCode == 39) {
+      imageNext();
+    } else if (event.keyCode == 37) {
+      imagePrev();
     }
   });
 
@@ -47,7 +28,7 @@ $(document).ready(function () {
   dotSlider.click(function () {
     dotSlider.removeClass('active');
     $(this).addClass('active');
-    
+
     var imgActive = $('img.active');
     var dotIndex = $(this).index();
     imgActive.removeClass('active');
@@ -55,3 +36,41 @@ $(document).ready(function () {
   });
 
 });
+
+//FUNCIONS
+
+function imageNext() {
+  var imgActive = $('img.active');
+  var imgFirst = $('img.first');
+  var dotActive = $('i.fa-circle.active');
+  var dotFirst = $('i.fa-circle.first');
+
+  imgActive.removeClass('active');
+  dotActive.removeClass('active');
+
+  if (imgActive.hasClass('last')) {
+    imgFirst.addClass('active');
+    dotFirst.addClass('active');
+  } else {
+    imgActive.next('img').addClass('active');
+    dotActive.next('i').addClass('active');
+  }
+};
+
+function imagePrev() {
+  var imgActive = $('img.active');
+  var imgLast = $('img.last');
+  var dotActive = $('i.fa-circle.active');
+  var dotLast = $('i.fa-circle.last');
+
+  imgActive.removeClass('active');
+  dotActive.removeClass('active');
+
+  if (imgActive.hasClass('first')) {
+    imgLast.addClass('active');
+    dotLast.addClass('active');
+  } else {
+    imgActive.prev('img').addClass('active');
+    dotActive.prev('i').addClass('active');
+  }
+};

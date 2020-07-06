@@ -19,6 +19,7 @@ main {
   align-items: center;
 }
 
+/* Frecce */
 .prev,
 .next {
   width: 5%;
@@ -41,6 +42,7 @@ main {
   font-size: 25px;
 }
 
+/* Immagini */
 .images {
   width: 70%;
 }
@@ -58,6 +60,7 @@ img.active {
   display: block;
 }
 
+/* Pallini */
 .dots {
   margin: 20px auto;
   background-color: rgba(255, 255, 255, 0.5);
@@ -74,6 +77,17 @@ img.active {
   font-size: 13px;
   padding: 10px 5px;
   color: #aaa;
+  transition: all 0.1s;
+}
+
+.fa-circle:hover,
+.fa-circle:hover {
+  transform: scale(1.3);
+}
+
+.fa-circle:active,
+.fa-circle:active {
+  transform: scale(0.9);
 }
 
 i.active {
